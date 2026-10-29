@@ -2,7 +2,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/cuihuan/awesome-ai-gateway?style=social)](https://github.com/cuihuan/awesome-ai-gateway/stargazers)
 [![Evaluation set](https://img.shields.io/badge/📊-评测集-orange)](BENCHMARKS.zh-CN.md)
-[![Data verified](https://img.shields.io/github/last-commit/cuihuan/awesome-ai-gateway?label=%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81&color=success&logo=githubactions&logoColor=white)](.github/workflows/daily-update.yml) [![CI](https://img.shields.io/github/actions/workflow/status/cuihuan/awesome-ai-gateway/ci.yml?label=tests)](https://github.com/cuihuan/awesome-ai-gateway/actions/workflows/ci.yml)
+[![Snapshot freshness](https://img.shields.io/github/actions/workflow/status/cuihuan/awesome-ai-gateway/daily-update.yml?label=snapshot%20freshness)](.github/workflows/daily-update.yml) [![CI](https://img.shields.io/github/actions/workflow/status/cuihuan/awesome-ai-gateway/ci.yml?label=tests)](https://github.com/cuihuan/awesome-ai-gateway/actions/workflows/ci.yml)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md) [![License: CC0](https://img.shields.io/badge/license-CC0-lightgrey.svg)](LICENSE)
 
 > **约 10 秒选对，弄懂为什么，每个数字都能自己复核。** 一棵覆盖 220+ 网关的决策树、一本讲清它们如何工作与如何失效的手册，加上可复现的成本评测与每条主张背后带日期的证据——包括我们排除了什么、为什么排除。CC0，无厂商赞助，无返利链接。
@@ -10,6 +10,9 @@
 _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**——一个旗舰模型就吃掉 78%，只因为我把所有请求都默认打给了最贵的那个。于是我把整个网关生态摸了一遍。→ [完整故事](#为什么做这个) · [完整对比](compare/coding-agent-routers-2026.zh-CN.md)_
 
 **语言：** [English](README.md) · 简体中文
+
+> **数据快照待复核：** 七份手动数据集仍保留历史复核日期；每日星数及版本刷新不代表价格、评分或政策已重新验证。详见[复核清单](docs/maintenance-2026-10-28.md#snapshot-review-backlog)与 [issue #146](https://github.com/cuihuan/awesome-ai-gateway/issues/146)。
+
 
 <p align="center">
 <a href="#我该用哪个网关"><kbd> &nbsp; 🧭 选一个 &nbsp; </kbd></a> &nbsp;
@@ -236,7 +239,7 @@ _星数是累计的:项目停更了它也不会往下掉。下面这些被跟踪
 - [Glama Gateway](https://glama.ai/ai/gateway) — OpenAI 兼容网关，接入 100+ 模型，统一账单、缓存与日志（开源内核 [glama-ai/lightport](https://github.com/glama-ai/lightport)）。
 
 <details>
-<summary><b>新且未经核实的中转（40 家）</b>——等待独立保真度验证的透明转售；先读<a href="#社区中转避雷观察名单">中转避雷观察名单</a></summary>
+<summary><b>新且未经核实的中转（45 家）</b>——等待独立保真度验证的透明转售；先读<a href="#社区中转避雷观察名单">中转避雷观察名单</a></summary>
 
 - [Loop Gateway](https://api.loopxxi.com) — OpenAI 兼容代理，每个请求以比特币 sats（而非美元）计费。经 OpenRouter 接入 311 个模型、加价 15%。无需账号/邮箱/银行卡；用闪电网络充值即得 bearer token。三种鉴权（预付 bearer、L402、Cashu）。线上托管于 [api.loopxxi.com](https://api.loopxxi.com)。 **新且未经核实**（匿名；其公开 GitHub 仓库现已删除，按闭源托管中转看待）——它*通过运营者自己的 OpenRouter 账号*转售前沿模型并加价 15%，无账号+加密货币预付意味着一旦偷换模型或跑路都无从追索；投产前请用 [canary_check.py](scripts/canary_check.py) 验证保真度，且只充值你能承受损失的金额。
 - [nullsink](https://nullsink.is) ([仓库](https://github.com/nullsink/nullsink)) — 无账号的前沿模型 API 计费代理，用门罗币（Monero）或比特币（Bitcoin）付费。无需账号/邮箱/银行卡；生成 bearer token、链上预付，改一个 base URL 即可用官方 SDK 调用。加价约 10%，仅在充值时收取一次；不记录 IP、不记录请求日志；付款与 token 不可关联。单文件可执行、可自托管（TypeScript/Bun，AGPL-3.0），线上服务 [nullsink.is](https://nullsink.is)。 **新且未经核实**（仓库 2026-06 新建、<!--s:nullsink/nullsink-->⭐ 12<!--/s-->）——无账号+加密货币预付+无日志，一旦偷换模型或跑路都无从追索；投产前请用 [canary_check.py](scripts/canary_check.py) 验证保真度，且只充值你能承受损失的金额。
@@ -264,7 +267,7 @@ _星数是累计的:项目停更了它也不会往下掉。下面这些被跟踪
 - [Gonka Broker](https://gonkabroker.com) — 接入去中心化 Gonka GPU 网络的 OpenAI / Anthropic 兼容端点，**只提供开源权重模型**（[实时目录](https://proxy.gonkabroker.com/v1/models):MiniMax-M2.7、Kimi-K2.6、DeepSeek-V4-Flash，以及 BGE-M3 嵌入）。两点足够特殊、也正是值得一看的理由:**输入与输出同价**，且单价在**充值时锁定**、覆盖该笔余额全程，上游调价不会重新定价你已买的额度。刷卡支付，无需加密钱包。**新且未经核实**（自荐）——由于它自托管开源权重而非转售前沿模型额度，这里的保真度问题是**量化精度，而非模型替换**:请用 [canary_check.py](scripts/canary_check.py) 与同一权重的官方托管方做对比。
 - [InferAll](https://inferall.ai) — 托管 OpenAI Chat Completions / Responses 与 Anthropic Messages 网关。运营方文档称 NVIDIA NIM 开源权重模型在每日限额内每 token $0：先有无需付款的 25 次调用，之后需一次性 $5 激活并计入余额；付费厂商调用消耗套餐或预付额度。**新且未经核实**（自荐），模型保真度尚未独立验证。（[来源](https://inferall.ai/pricing)，核对于 2026-10-22）。
 - [Obscurify.ai](https://obscurify.ai) — 闭源托管服务，Pro 套餐（$45/月）提供 OpenAI 兼容 API，另有游客网页聊天与预付用量。以账号编号代替邮箱身份，运营方文档列出加密货币与盲券支付。**新且未经核实**（自荐），API 保真度与隐私主张尚未独立验证。（[来源](https://obscurify.ai/pricing)，核对于 2026-10-22）。
-- [APIGOTO](https://www.china-aiapi.com) — 托管多模型网关，当前公开入门示例使用 `https://api.apigoto.com/v1`；文档说明支持 OpenAI Responses、Anthropic Messages、BYOK 密钥托管与按量计费。**新且未经核实**（运营方提交），协议保真度与宣传的厂商健康检查未经独立测试（来源核对于 2026-10-22）。
+- [APIGOTO](https://www.china-aiapi.com) — 托管多模型网关，公开文档介绍 OpenAI Responses、Anthropic Messages、BYOK 密钥托管与用量计费。运营方说明国际端点为 `https://api.china-aiapi.com/v1`，中国大陆端点为 `https://api.apigoto.com/v1`；公开首页仍展示后者。**新且未经核实**（运营方提交），地区路由及协议保真度未经独立测试（[运营方更正](https://github.com/cuihuan/awesome-ai-gateway/pull/147)，核对于 2026-10-28）。
 - [Jev Agent](https://jev-agent.com/api-access) — Jev 决策模型托管中转，以一个密钥和额度余额提供 SystemOne、分类及 Decisions 格式端点。**新且未经核实**（作者提交），独立于 TypeSafe AI，模型保真度未经独立验证。（[来源](https://jev-agent.com/docs)，核对于 2026-10-22）。
 - [ModelRush](https://modelrush.ai/docs) — 按预付费额度计费的托管多模态 API，提供兼容 OpenAI 的对话接口，以及独立的图像、视频和音频接口；**新服务，尚未验证（自荐）**，不声称已通过独立模型保真度测试。（来源核对于 2026-10-22）。
 - [TopxAI](https://ai.topxea.com) — 托管 OpenAI / Anthropic 兼容预付费中转，公开[逐路由价格](https://ai.topxea.com/api/pricing)。目录区分共享池、官方线与私有部署；这些名称和折扣不能证明上游身份。**新且未经核实**（运营方提交），使用前需将所选路由与第一方端点独立比对。（[来源](https://ai.topxea.com/pricing)，核对于 2026-10-22）。
@@ -278,6 +281,12 @@ _星数是累计的:项目停更了它也不会往下掉。下面这些被跟踪
 - [AICraft](https://aicraftapi.net) — 托管 OpenAI 兼容聚合网关，以预付美元余额按量计费，可选自动模型路由，也可直接指定模型名。**新且未经核实**（运营方提交），路由、节省费用与模型保真度尚未独立测试。（[来源](https://aicraftapi.net/docs)，核对于 2026-10-22）。
 - [onomeo](https://onomeo.com) — 单人运营的托管 OpenAI 兼容网关，结合有调用限额的厂商免费层与付费模型。最低充值 $5，余额不过期、不自动续费，较长的免费模型请求消耗更多调用次数。公开测试中，需注意上游服务条款、数据使用政策及共享额度耗尽。**新且未经核实**（运营方提交）。（[来源](https://onomeo.com/integrations#docs)，核对于 2026-10-22）。
 - [Infere](https://infere.com) — 托管 OpenAI 兼容网关，使用预付余额，可明确指定模型，也可按 Token 配置、Prompt 复杂度与路由模式自动选择，支持 Git 原生 Prompt 管理。**新且未经核实**（厂商提交），本清单未独立验证模型保真度、节省费用或预算执行。（[入门文档](https://infere.com/documentation/getting-started/)，核对于 2026-10-22）。
+- [System One API](https://system-one.dev/en/api) — 托管结构化决策 API，将分类、评分和提取请求路由至模型目录，使用预付积分计费。**新且未经核实**（社区提交）；属于决策模型网关，非通用聊天 API。公开文档核对于 2026-10-28。
+- [Gisoo](https://gisoo.pro) — 波斯语 AI 服务，提供托管 OpenAI 兼容 API（`https://gisoo.pro/api/v1`），文档另述 Anthropic/Claude Code 接入方式。**新且未经核实**（运营方提交）；模型目录规模、模型保真度和计费未经独立测试。（[文档](https://gisoo.pro/docs)，核对于 2026-10-28）。
+- [Roteo](https://roteo.ai) — 托管 OpenAI 兼容网关，提供文本、图片和视频模型，按请求从钱包以稳定币支付；文档中的 Anthropic Messages 路径目前面向 Claude Code。**新且未经核实**（社区提交），未独立测试上游身份、模型保真度和结算。（[概览](https://www.roteo.ai/docs/overview)，核对于 2026-10-28）。
+- [TeapotRouter](https://teapotrouter.com) — 托管网关，公开介绍 GPT 与 Claude Code 接入，提供 JSON 模型定价端点。**新且未经核实**（运营方提交）；最低充值、故障转移和模型保真度未获独立确认。（[价格目录](https://teapotrouter.com/api/pricing)，核对于 2026-10-28）。
+- [CloudGPU Model API](https://cloudgpu.app/api) — 托管 OpenAI 兼容模型 API（`https://cloudgpu.app/v1`），提供公开模型目录与 Anthropic Messages 支持，预付余额可同时用于 GPU 租赁。公开测试阶段，无 SLA。**新且未经核实**（运营方提交）；目录可见不代表已验证实际模型身份。（[API 文档](https://cloudgpu.app/api/docs)，核对于 2026-10-28）。
+
 
 </details>
 
@@ -372,6 +381,12 @@ _生态里被问得最多的问题之一，而网上的答案大多已过期。�
 - [GPROXY](https://github.com/LeenHawk/gproxy) <!--s:LeenHawk/gproxy-->⭐ 269<!--/s--> — AGPL-3.0 Rust 网关，接收 OpenAI Chat / Responses、Anthropic Messages 与 Gemini 格式，带凭据池、用户 / 团队 / 组织配额和管理控制台。早期项目，自有 OAuth 订阅渠道存在厂商条款与封号风险。（来源核对于 2026-10-22）。
 
 - ⚠️ 已停滞但有历史意义：[BricksLLM](https://github.com/bricks-cloud/BricksLLM) <!--s:bricks-cloud/BricksLLM-->⭐ 1.2k<!--/s-->（PII 脱敏、按 Key 限额；2025 年初起不再活跃）、[Glide](https://github.com/EinStack/glide) <!--s:EinStack/glide-->⭐ 160<!--/s-->（2024 年起停更）。
+- [ShanHaiGateway](https://github.com/ffseika0304/shanhai-gateway) <!--s:ffseika0304/shanhai-gateway-->⭐ 4<!--/s--> — Go 网关（MIT），汇聚 OpenAI 兼容上游，提供加权路由、配额冷却、任务亲和与配置热加载。仅应路由获授权的账号和凭据；订阅及免费额度池化存在服务条款与封号风险。作者公布的节省费用和缓存命中率未在此独立验证。来源核对于 2026-10-28。
+- [Relay](https://github.com/caelum0x/railyard/tree/main/apps/relay) <!--s:caelum0x/railyard-->⭐ 0<!--/s--> — TensorZero 的 Apache-2.0 分支，保留其网关二进制、配置及推理/OpenAI 兼容端点，文档说明了按 key 预算、故障转移和可选预付计费。以上为维护方文档所述，本清单未做运行验证。来源核对于 2026-10-28。
+- [Respan Gateway](https://github.com/respanai/respan-gateway) <!--s:respanai/respan-gateway-->⭐ 380<!--/s--> — Rust 网关（MIT/Apache-2.0），转换 OpenAI Chat/Responses、Anthropic Messages 与 Gemini 格式，提供路由、故障转移、本地模型后端及 MCP 工具集成。早期项目；能力依据源码文档，本清单未做运行验证（核对于 2026-10-28）。
+- [relay-failover](https://github.com/huangjinpeng216/relay-failover) <!--s:huangjinpeng216/relay-failover-->⭐ 0<!--/s--> — Node.js 代理（MIT），以本地端点汇聚 OpenAI 兼容上游，提供加权路由、冷却、上游鉴权头适配和健康报告。协议透传不等于跨协议转换；本清单未独立测试断流恢复。来源核对于 2026-10-28。
+- [Argus](https://github.com/karmendra8386/argus) <!--s:karmendra8386/argus-->⭐ 0<!--/s--> — Python LLM 策略网关（MIT），提供可配置的密钥/个人信息检测、输入输出策略与审计记录。打包 CLI 仅运行 mock 演示；真实 OpenAI、Anthropic 或兼容后端需在代码中配置，流式支持仍在路线图中。检测效果未经独立测试。来源核对于 2026-10-28。
+
 
 ## 🏢 企业合规
 
@@ -490,6 +505,9 @@ _生态里被问得最多的问题之一，而网上的答案大多已过期。�
 - [Dome Systems](https://www.domesystems.ai) — 托管的 Agent 运营平台，其网关把 MCP/API 工具调用与模型调用放在同一条受治理的路径上:每次调用都按工具参数评估授权规则，每个 Agent 拥有独立身份与可吊销凭据，并提供可导出的审计记录。有免费档，之上为商业版。 以上为项目方文档所述，本清单未独立评测。（来源核对于 2026-10-22）。
 - [Intercis](https://intercis.io) — 位于 OpenAI / Anthropic 流量路径的托管策略代理，在 Agent 运行时收到响应前移除被拒绝的工具调用。**厂商提交，未经评测**。文档明确了局限：流式响应需先完整缓冲再判断；厂商托管工具（包括托管 MCP）仅记录、无法阻断。（[来源](https://intercis.io/limitations)，核对于 2026-10-22）。
 - [SandBase CLI](https://github.com/sandbaseai/cli) <!--s:sandbaseai/cli-->⭐ 185<!--/s--> — Apache-2.0 CLI 与本地 MCP 桥，支持 OAuth 接入、发现与工具执行，将 Agent 连接到 SandBase 托管模型 / API 目录。客户端开源，托管平台是独立的商业服务，本清单未验证其模型保真度。（来源核对于 2026-10-22）。
+- [Switchyard](https://github.com/caelum0x/railyard/tree/main/apps/toolgate) <!--s:caelum0x/railyard-->⭐ 0<!--/s--> — Railyard 单仓库内的 Rust MCP 工具网关（CLI `sy`），通过 Streamable HTTP 暴露工具目录，文档包含 OAuth、自带 key 的工具及预授权/结算计量。以上为项目方所述，本清单未独立测试安全控制与计费行为。来源核对于 2026-10-28。
+- [Scalekit](https://scalekit.com) — 托管 Agent 鉴权网关，在终端用户授权下代理 SaaS 工具调用，提供凭据托管、令牌刷新与 MCP 集成。**厂商自荐，未经评估**；以上控制依据公开文档，本清单未独立进行安全测试。（[AgentKit 概览](https://docs.scalekit.com/agentkit/overview/)，核对于 2026-10-28）。
+
 
 ## 🔧 更多按能力分（横切关注点）
 
@@ -772,6 +790,11 @@ _第一大信任问题，而全网没有一份中立的跨厂商答案。这里�
 | AICraft | 性价比优先 | ⚠️ 未验证——用前自测 | 自荐托管中转，2026-10-22 核对公开文档；收录不代表已验证模型身份、计费正确性或隐私行为。 |
 | onomeo | 性价比优先 | ⚠️ 未验证——用前自测 | 自荐托管中转，2026-10-22 核对公开文档；收录不代表已验证模型身份、计费正确性或隐私行为。 |
 | Infere | 性价比优先 / 智能路由 | ⚠️ 未验证——用前自测 | 厂商提交的预付费路由网关，2026-10-22 读取公开入门文档；运行时保真度、预算执行与节省费用未经独立验证。 |
+| System One API | 成本优先 | ⚠️ 未核实，使用前核验 | 公开文档于 2026-10-28 复核；模型身份、计费及隐私行为未经独立验证。 |
+| Gisoo | 成本优先 | ⚠️ 未核实，使用前核验 | 公开文档于 2026-10-28 复核；模型身份、计费及隐私行为未经独立验证。 |
+| Roteo | 成本优先 | ⚠️ 未核实，使用前核验 | 公开文档于 2026-10-28 复核；模型身份、计费及隐私行为未经独立验证。 |
+| TeapotRouter | 成本优先 | ⚠️ 未核实，使用前核验 | 公开文档于 2026-10-28 复核；模型身份、计费及隐私行为未经独立验证。 |
+| CloudGPU Model API | 成本优先 | ⚠️ 未核实，使用前核验 | 公开文档于 2026-10-28 复核；模型身份、计费及隐私行为未经独立验证。 |
 
 ## 📊 评测速递
 
@@ -868,6 +891,8 @@ _第一大信任问题，而全网没有一份中立的跨厂商答案。这里�
 - [AI gateway vs API gateway: what changes when the traffic is tokens](https://thefrontierwire.com/articles/llm-gateway-vs-api-gateway/) — The Frontier Wire，2026-09 — 逐机制对比 AI 网关与 API 网关（按 token 计费、长时流式、各供应商不同的错误语义），依据 AWS、Kong、NGINX、OpenAI 与 Anthropic 官方文档。（来源核对于 2026-10-22）。
 - [agentgateway CEL Gotchas: Fail-Open + 403 Fix](https://webofmike.com/agentgateway-cel-authorization-gotchas/) — Mike Moore，2026-09 — 两个都显示 `Accepted`、`Attached` 的授权策略错误（在 Solo Enterprise for agentgateway v2026.8.2 上验证）：`matchExpressions` 各条目是 OR 关系，每条规则单独写一条会 fail-open；`traffic.authorization` 阶段 `llm.requestModel` 为空，据此校验模型会拒绝所有请求。附一套能同时抓出两者的四请求测试。（来源核对于 2026-10-22）。
 - [Cap LLM Spend per API Key: agentgateway 1.5](https://webofmike.com/agentgateway-per-key-llm-budgets/) — Mike Moore，2026-09 — 开源 agentgateway v1.5.0 的按 key token/美元预算（超额返回 HTTP 429，或仅记录不拦截的 `Audit` 模式）与按 key 模型白名单（HTTP 403），附基于 mock LLM 的 Docker 演示。价格目录中缺失的模型不会计入美元预算。（来源核对于 2026-10-22）。
+- [Load Test an LLM API Without Misleading Results](https://modelflare.dev/articles/llm-api-load-testing) — Modelflare，2026-10 — LLM API 压测的评审清单：记录负载构成（输入/输出长度分布、流式占比、工具调用）、到达模型、并发、预热与区域、路由与重试策略，并以明确的分母报告错误率、p50/p95/p99 与首个输出时间；只压测自己拥有的端点与已获批的容量。（来源核对于 2026-10-28）。
+- [Apply Backpressure to AI API Workloads](https://modelflare.dev/articles/ai-api-backpressure) — Modelflare，2026-10 — 按故障域限制在途请求数，队列保持短小并感知截止时间，在发起任何上游请求前拒绝无法在调用方剩余时间内完成的工作，并按租户或优先级预留容量；说明背压与限流的区别。（来源核对于 2026-10-28）。
 
 **AI 网关到底是什么**
 - [The 2026 AI Engineering Report](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) — Amplify Partners（联合 Notion 与 Vercel），2026 — 本清单默认前提背后的调研数据：1,000+ 工程师中 87% 多模型并用、75% 受成本约束、成本是生产第二大监控指标、推理层是全栈中最倾向「买而非造」的一层。

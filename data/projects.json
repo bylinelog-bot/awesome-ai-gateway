@@ -107,6 +107,11 @@
     "api7/aisix",
     "yinxulai/osw",
     "LeenHawk/gproxy",
-    "sandbaseai/cli"
+    "sandbaseai/cli",
+    "ffseika0304/shanhai-gateway",
+    "caelum0x/railyard",
+    "respanai/respan-gateway",
+    "huangjinpeng216/relay-failover",
+    "karmendra8386/argus"
   ]
 }
